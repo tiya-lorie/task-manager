@@ -17,7 +17,7 @@ resource 'User' do
     parameter :password, 'Password', required: true
 
     let(:name) { 'Test' }
-    let(:email) { test@test.com }
+    let(:email) { 'test@test.com' }
     let(:password) { 'password' }
 
     example_request('user create') { expect(status).to be 200 }
@@ -29,7 +29,7 @@ resource 'User' do
     parameter :password, 'Password'
 
     let(:name) { 'Test new' }
-    let(:email) { test_new@test.com }
+    let(:email) { 'test_new@test.com' }
     let(:password) { 'password-new' }
 
     example_request('user update') { expect(status).to be 200 }

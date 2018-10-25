@@ -1,6 +1,6 @@
 class Projects::Update < ActiveInteraction::Base
   object :project
-  string :title, :description, :status
+  string :title, :description, :status, default: nil
 
   def execute
     attributes = inputs.except(:project).compact

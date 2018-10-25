@@ -1,6 +1,6 @@
 class Tasks::Update < ActiveInteraction::Base
   object :task
-  string :title, :description, :status
+  string :title, :description, :status, default: nil
 
   def execute
     attributes = inputs.except(:task).compact
