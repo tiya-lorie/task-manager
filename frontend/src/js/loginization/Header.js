@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import Logout from './Logout';
 import Loginization from './Loginization';
 import cookie from 'react-cookies';

@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { shape, string, number } from 'prop-types';
-import './App.css';
 import TaskModal from './TaskModal';
 
 const propTypes = {

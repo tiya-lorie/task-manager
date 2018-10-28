@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { func } from 'prop-types';
-import './App.css';
 import cookie from 'react-cookies';
 
 const propTypes = {
@@ -49,6 +48,7 @@ class LogoutModal extends Component {
     return (
       <div className='popup'>
         <div className='popup-inner popup-inner-sign'>
+          <div className='close-popup' onClick={ closePopup }>X</div>
           <div className='modal-title'>Do you want log out?</div>          
             <span className='sign-up-btn' onClick={ closePopup }>No</span>
             <span className='log-in-btn' onClick={ () => handleSubmit() }>Yes</span>

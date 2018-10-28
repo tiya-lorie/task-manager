@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import LogoutModal from './LogoutModal';
 
 class Logout extends Component {

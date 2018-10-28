@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
-import Header from './Header';
-import Projects from './Projects';
+import Header from './loginization/Header';
+import Projects from './projects/Projects';
 import cookie from 'react-cookies';
 
 class App extends Component {

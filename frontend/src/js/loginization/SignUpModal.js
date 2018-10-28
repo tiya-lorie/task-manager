@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { func } from 'prop-types';
-import './App.css';
 import cookie from 'react-cookies'
 
 const propTypes = {
@@ -30,6 +29,7 @@ class SignUpModal extends Component {
   handleChangePassword = ({ target: { value } }) => {
     this.setState({ password: value });
   };
+
 
   handleSubmit = () => {
     const {

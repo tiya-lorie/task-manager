@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { shape, string, func, number } from 'prop-types';
-import './App.css';
 import TaskItem from './TaskItem';
 import TaskCreatePopup from './TaskCreatePopup';
 import cookie from 'react-cookies';

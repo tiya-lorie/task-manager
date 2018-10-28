@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import ProjectItem from './ProjectItem';
 import ProjectCreatePopup from './ProjectCreatePopup';
 import cookie from 'react-cookies';

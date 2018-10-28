@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { shape, string, func, number } from 'prop-types';
-import './App.css';
 import TaskUpdate from './TaskUpdate';
 
 const propTypes = {

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { shape, string, func, number } from 'prop-types';
-import './App.css';
-import Tasks from './Tasks';
+import Tasks from '../tasks/Tasks';
 import ProjectUpdate from './ProjectUpdate';
 
 const propTypes = {

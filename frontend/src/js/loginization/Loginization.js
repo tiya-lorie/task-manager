@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import './App.css';
 import SignUpModal from './SignUpModal';
 
 class Header extends Component {
