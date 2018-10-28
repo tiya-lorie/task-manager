@@ -45,6 +45,7 @@ group :development, :test do
   gem 'selenium-webdriver'
   gem 'rspec-rails', '~> 3.6'
   gem 'rspec_api_documentation'
+  gem 'rack-cors', require: 'rack/cors'
 end
 
 group :test do

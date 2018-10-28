@@ -1,5 +1,18 @@
 {
-  "name": "task-manager",
-  "private": true,
-  "dependencies": {}
+  "name": "frontend",
+  "version": "1.0.0",
+  "description": "This README would normally document whatever steps are necessary to get the application up and running.",
+  "scripts": {
+    "build": "webpack --config webpack.prod.js",
+    "start": "webpack-dev-server --config webpack.dev.js",
+    "test": "mocha --require babel-polyfill ./js/core/testSetup.js --compilers js:babel-core/register \"js/**/*.spec.js\""
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "author": "",
+  "license": "ISC"
 }

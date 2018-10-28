@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { shape, string, func, number } from 'prop-types';
 import Select from 'react-select';
+import cookie from 'react-cookies';
 
 const STATUSES = [
   { value: 'new', label: 'New' },
@@ -28,7 +29,8 @@ class TaskUpdate extends Component {
       title: props.task.title,
       description: props.task.description,
       status: props.task.status,
-      project_id: props.project_id
+      project_id: props.project_id,
+      token: cookie.load('token')
     };
   }
 
@@ -57,7 +59,7 @@ class TaskUpdate extends Component {
     var url = 'http://localhost:3000/api/v1/users/tasks/' + this.props.task.id;
     return fetch(url, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'WWJo2uVGlPlwRMlNlc6GHw' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': this.state.token },
       body: JSON.stringify({ title: title, description: description, status: status.value, project_id: project_id })
     }).then(response => {
       return response;
@@ -68,7 +70,7 @@ class TaskUpdate extends Component {
     var url = 'http://localhost:3000/api/v1/users/tasks/' + this.props.task.id + '?project_id=' + this.props.project_id;
     return fetch(url, {
       method: 'DELETE',
-      headers: { 'Authorization': 'WWJo2uVGlPlwRMlNlc6GHw' }
+      headers: { 'Authorization': this.state.token }
     }).then(response => {
       return response;
     }).catch(err => err);

@@ -18,6 +18,10 @@
   cursor: pointer;
 }
 
+.log-div {
+  display: inline-block;
+}
+
 .main-title {
   font-size: 30px;
   margin-right: 30%;
@@ -71,6 +75,8 @@
 .popup-inner-sign {
   height: 220px;
   overflow: hidden;
+  text-align: center;
+  color: black;
 }
 
 .project-modal {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { shape, string, func, number } from 'prop-types';
 import Select from 'react-select';
+import cookie from 'react-cookies';
 
 const STATUSES = [
   { value: 'new', label: 'New' },
@@ -26,7 +27,8 @@ class ProjectUpdate extends Component {
     this.state = {
       title: props.project.title,
       description: props.project.description,
-      status: props.project.status
+      status: props.project.status,
+      token: cookie.load('token')
     };
   }
 
@@ -55,7 +57,7 @@ class ProjectUpdate extends Component {
     var url = 'http://localhost:3000/api/v1/users/projects/' + this.props.project.id;
     return fetch(url, {
       method: 'PUT',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'WWJo2uVGlPlwRMlNlc6GHw' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': this.state.token },
       body: JSON.stringify({ title: title, description: description, status: status.value })
     }).then(response => {
       return response;
@@ -66,7 +68,7 @@ class ProjectUpdate extends Component {
     var url = 'http://localhost:3000/api/v1/users/projects/' + this.props.project.id;
     return fetch(url, {
       method: 'DELETE',
-      headers: { 'Authorization': 'WWJo2uVGlPlwRMlNlc6GHw' }
+      headers: { 'Authorization': this.state.token }
     }).then(response => {
       return response;
     }).catch(err => err);

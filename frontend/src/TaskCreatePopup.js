@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { shape, string, func, number } from 'prop-types';
 import Select from 'react-select';
+import cookie from 'react-cookies';
 
 const STATUSES = [
   { value: 'new', label: 'New' },
@@ -26,7 +27,8 @@ class TaskCreatePopup extends Component {
     this.state = {
       title: '',
       description: '',
-      status: ''
+      status: '',
+      token: cookie.load('token')
     };
   }
 
@@ -56,7 +58,7 @@ class TaskCreatePopup extends Component {
     var url = 'http://localhost:3000/api/v1/users/projects/' + this.props.project.id + '/tasks';
     fetch(url, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'Authorization': 'WWJo2uVGlPlwRMlNlc6GHw' },
+      headers: { 'Content-Type': 'application/json', 'Authorization': this.state.token },
       body: JSON.stringify({ title: title, description: description, status: status.value })
     }).then(response => {
       return response;

@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ProjectItem from './ProjectItem';
 import ProjectCreatePopup from './ProjectCreatePopup';
-
-const propTypes = {
-};
+import cookie from 'react-cookies';
 
 class Projects extends Component {
  constructor(props) {
@@ -12,7 +10,8 @@ class Projects extends Component {
 
     this.state = {
       projects: [],
-      showPopup: false
+      showPopup: false,
+      token: cookie.load('token')
     };
   }
 
@@ -21,7 +20,7 @@ class Projects extends Component {
   componentDidMount() {
     fetch('http://localhost:3000/api/v1/users/projects', {
       method: 'GET',
-      headers: { 'Authorization': 'WWJo2uVGlPlwRMlNlc6GHw' }
+      headers: { 'Authorization': this.state.token }
     })
       .then(response => response.json())
       .then(data => this.setState({ projects: data.projects }));
@@ -54,7 +53,5 @@ class Projects extends Component {
     );
   }
 }
-
-Projects.propTypes = propTypes;
 
 export default Projects;

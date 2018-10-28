@@ -2,6 +2,7 @@ class Api::V1::Users::Projects::ApplicationController < Api::V1::Users::Applicat
   private
 
   def set_project
+  	
     @project = ::Projects::Find.run!(id: params[:project_id], user: current_user)
   end
 end

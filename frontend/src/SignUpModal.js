@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { func } from 'prop-types';
 import './App.css';
+import cookie from 'react-cookies'
 
 const propTypes = {
   closePopup: func.isRequired
@@ -13,7 +14,8 @@ class SignUpModal extends Component {
     this.state = {
       name: '',
       email: '',
-      password: ''
+      password: '',
+      token: ''
     };
   }
 
@@ -31,23 +33,27 @@ class SignUpModal extends Component {
 
   handleSubmit = () => {
     const {
-      state: { name, email, password },
+      state: { name, email, password, token },
       createUser,
-      createSession
+      createSession,
+      setToken
     } = this;
 
     createUser(name, email, password);
     createSession(email, password);
+    setToken(token);
   };
 
   handleLogin = () => {
     const {
-      state: { name, email, password },
+      state: { name, email, password, token },
       createUser,
-      createSession
+      createSession,
+      setToken
     } = this;
 
     createSession(email, password);
+    setToken(token);
   };
 
   createUser = (name, email, password) => {
@@ -65,10 +71,13 @@ class SignUpModal extends Component {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ email: email, password: password })
-    }).then(response => {
-      return response;
-    }).catch(err => err);
-  };
+    }).then(response => response.json())
+      .then(data => this.setState({ token: data.token }));
+  }
+
+  setToken = (token) => {
+    cookie.save('token', token, { path: '/' })
+  }
 
   render() {
     const {

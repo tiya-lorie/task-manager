@@ -2,7 +2,6 @@ class Api::V1::Users::Projects::TasksController < Api::V1::Users::Projects::Appl
   before_action :set_project
   before_action :set_task, except: %i[index create]
 
-
   def index
     tasks = ::Tasks::List.run!(params.merge(project: @project))
     render json: { tasks: tasks.as_json }

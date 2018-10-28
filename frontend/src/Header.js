@@ -1,37 +1,34 @@
 import React, { Component } from 'react';
 import './App.css';
-import SignUpModal from './SignUpModal';
+import Logout from './Logout';
+import Loginization from './Loginization';
+import cookie from 'react-cookies';
 
 class Header extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      showSignUp: false
+      token: cookie.load('token')
     };
   }
 
-  toggleSignUp = () => this.setState(state => ({ showSignUp: !state.showSignUp }));
-
   render() {
     const {
-      state: { showSignUp },
-      toggleSignUp
+      state: { token }
     } = this;
 
     return (
       <div className='header'>
         <div className='header-title'>
           <span className='main-title'>Task manager</span>
-          <span className='sign-up' onClick={ toggleSignUp }>Sign in</span>
-        </div>
-        {
-          showSignUp ? 
-            <SignUpModal
-              closePopup={ toggleSignUp }
-            />
-          : null
-        }        
+          {
+            token ?
+              <Logout/>
+            :
+              <Loginization/>
+          }          
+        </div>        
       </div>
     );
   }

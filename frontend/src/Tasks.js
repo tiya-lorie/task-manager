@@ -3,6 +3,7 @@ import { shape, string, func, number } from 'prop-types';
 import './App.css';
 import TaskItem from './TaskItem';
 import TaskCreatePopup from './TaskCreatePopup';
+import cookie from 'react-cookies';
 
 const propTypes = {
   project: shape ({
@@ -19,7 +20,8 @@ class Tasks extends Component {
 
     this.state = {
       tasks: [],
-      showPopup: false
+      showPopup: false,
+      token: cookie.load('token')
     };
   }
 
@@ -29,7 +31,7 @@ class Tasks extends Component {
     var url = 'http://localhost:3000/api/v1/users/projects/' + this.props.project.id + '/tasks';
     fetch(url, {
       method: 'GET',
-      headers: { 'Authorization': 'WWJo2uVGlPlwRMlNlc6GHw' }
+      headers: { 'Authorization': this.state.token }
     })
       .then(response => response.json())
       .then(data => this.setState({ tasks: data.tasks }));
